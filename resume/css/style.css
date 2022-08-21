@@ -1,0 +1,56 @@
+
+h2, h3 {
+    text-align: center;
+    color: rgba(0, 0, 0, 0.685);   
+    font-variant: small-caps ;
+}
+
+.ava { 
+    height:250px; 
+    border-radius: 50px 50px 50px 50px;
+    box-shadow: 10px 0px 20px 0px rgba(0, 0, 0, 1)
+}
+
+.card {
+    background: rgba(7, 134, 252, 0.226); 
+    border-radius: 20px 20px 20px 20px;
+    padding: 10px;
+}
+.card div:nth-child(even) {
+    font-size: 14px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    padding-top: 5px;
+}
+.card div:nth-child(odd) {
+    font-size: 16px;
+}
+.flex-card {
+    display:  flex;
+    justify-content: center; 
+}
+.list-sourse{
+   list-style-type: none;
+}
+
+.list-sourse a{
+    padding-right: 60px;
+    padding-left: 60px;
+    color: blue;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.list-sourse a:hover  {
+    color: red;
+    font-weight:900 ;
+    cursor:pointer;      
+}
+
+@media (max-width: 700px) {
+    .list-sourse {
+        display: block;
+        text-align: center;  
+    }
+}
+   
