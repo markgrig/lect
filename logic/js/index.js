@@ -48,3 +48,6 @@ const firstOp = false || "first"
 //ложные занчения с undefuind, null
 const twoOp = false ?? "two"
 console.log(firstOp, twoOp);
+
+
+// for (let a of arr) {}- перебор массива такой 
