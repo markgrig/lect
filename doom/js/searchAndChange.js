@@ -26,6 +26,7 @@ console.log(res3);
 //res2[0].innerHTML= "123"
 
 
+
 res4 = document.querySelectorAll('body')[0]
 //console.log(res4.innetHTML)
 //res4.innerHTML = "<h1> Замена подъехала </h1>"
@@ -51,8 +52,9 @@ navigation.append(newAnchor) // в конец
 //удаление
 //navigation.remove()
 
-//closest- поиск родителя 
+//closest- поиск по селектору 
 console.log( navigation.closest('header') )
+// firstElementChild
 
 //classList: add, remove, tongle ( если нет класса добавляет, если есть удаляет )
 navigation.classList.remove('navigator')
