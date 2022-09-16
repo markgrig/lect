@@ -1,47 +1,34 @@
-//Синхронный код
-const a = 5
+// async await
 
-console.log("Начало");
-for (let index = 0; index <= a; index++) {
-    console.log(index);
+const urlUser = "https://jsonplaceholder.typicode.com/users"
 
-}console.log("Конец");
+const urlTodos = "https://jsonplaceholder.typicode.com/todos"
+//минусы промисов в том, что возникает вложенность fetch, которую неудобно читать
 
-//Пример ассинхронного кода 
-const developer = {
-    name: "Mark",
-    isJSDev: true``
-}
- 
-//SeTimeout
-//setTimeout( ( )=> {console.log(a); } , 2000 )
+const getTodosForUserId = async () => {
+    try {
+        const responseUrlUser= await fetch(urlUser) //если вызов функции асинхронный идёт ожидание
+        if (!responseUrlUser.ok) {
+            throw new Error(`ошибка в urlUser = ${urlUser}`)
+        }
+        const users = await responseUrlUser.json()
+        const firstUserID = users[0]?.id
+        console.log('firstUserID',users)
+        
+        const responseUrlTodos = await fetch(`${urlTodos}/?userId=${firstUserID}`)
+        if (!responseUrlTodos.ok) {
+            throw new Error(`ошибка в urlTodos = ${urlTodos}`)
+        }
+        const todosForID = await responseUrlTodos.json()
+        console.log(' todosForID', todosForID)
 
-//setInterval( () => { console.log("Интервал 1 с");}, 1000)
-
-/*promise ( resolve - функция которая вызывается, если промис был воплнен успешно )
- reject - функция, которая вызывается, если промис был выполнен с ошибкой 
-Статусы промиса: pending - ожидание, fullfellded - выполнен успешно, rejected - выполнение промиса с ошибкой */
-
-const promise = new Promise( (resolve, reject ) => {
-    if ( developer.isJSDev) {
-        setTimeout( () => {
-            resolve(`${developer.name} разработчик JS`);
-        }, 3000 )
+    } catch(errors) {
+        console.log(errors)
     }
-    else {
-        reject( `${developer.name} не является разработчиком JS`)
+    finally{
+        console.log("finaly");
     }
-})
+} 
 
-console.log(promise);
-
-//then - обработка успешного выполнения, сath - обработка ошибок 
-promise.then((sucsessMessege) => {
-    console.log(sucsessMessege);
-    })
-    .catch( (errorMessage) => {
-        console.log(errorMessage);
-    })
-    .finally( () => {
-        console.log("промис закончил");
-    })
+const promise = getTodosForUserId()
+console.log(promise); //без аsync возвращает undf, с async возвращает промис
